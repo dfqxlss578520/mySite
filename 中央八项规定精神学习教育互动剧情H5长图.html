@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中央八项规定精神学习教育互动剧情H5长图</title>
+    <style>
+        /* 全局样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            overflow-x: hidden;
+            font-size: clamp(16px, 3vw, 20px);
+        }
+
+        .long-graph {
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .scene, .ending {
+            width: 100%;
+            height: 100vh;
+            padding: clamp(15px, 5vw, 40px);
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: relative;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .scene.active, .ending.active {
+            display: flex;
+        }
+
+        .content-container {
+            width: 68%; /* 对话框宽度占背景图的60% */
+            height: auto; /* 修改为auto，让高度自适应内容 */
+            max-height: 50%; /* 最大高度为背景图的35% */
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: clamp(20px, 5vw, 40px);
+            border-radius: clamp(10px, 3vw, 20px);
+            margin-bottom: clamp(20px, 10vw, 80px);
+            margin-top: auto; /* 向图片下部调整 */
+        }
+
+        .scene h2, .ending h2 {
+            font-size: clamp(22px, 5vw, 32px);
+            margin-bottom: clamp(15px, 3vw, 30px);
+            color: white;
+        }
+
+        .scene p, .ending p {
+            font-size: clamp(16px, 3vw, 22px);
+            margin-bottom: clamp(20px, 4vw, 40px);
+            text-indent: 2em;
+            text-align: left;
+            line-height: 1.8;
+            color: white;
+        }
+
+        .scene img, .ending img {
+            display: none;
+        }
+
+        .option-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: clamp(10px, 3vw, 20px);
+        }
+
+        .option {
+            padding: clamp(12px, 3vw, 20px) clamp(20px, 5vw, 40px);
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: clamp(6px, 2vw, 12px);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: clamp(16px, 3vw, 20px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            display: inline-block;
+            min-width: 0;
+            white-space: normal; /* 允许文本换行 */
+            max-width: 100%; /* 最大宽度为父容器的100% */
+        }
+
+        .option:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .content-container {
+                background-color: rgba(0, 0, 0, 0.7);
+            }
+            .scene p, .ending p {
+                text-align: justify;
+            }
+            .option {
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="long-graph">
+        <!-- 片头 -->
+        <div class="scene active" id="intro" style="background-image: url('0.png');">
+            <div class="content-container">
+                <p>你好，我是矿小纪，下面你将进入一段体验式交互学习。你是一名年轻有为的党员干部，单位派你和同事老张出差对野外项目工作开展情况进行检查调研。</p>
+                <div class="option-container">
+                    <a href="#" class="option" onclick="showScene('scene1')">奔赴野外</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第一幕：车站的意外迎接 -->
+        <div class="scene" id="scene1" style="background-image: url('1.png');">  
+            <div class="content-container">
+                <h2>第一幕：车站的意外迎接</h2>
+                <p>你们拖着行李走出项目驻地火车站，准备自行前往项目部时，项目负责人赵帅带着两辆豪华越野车前来迎接，并热情地要帮你们拿行李，称山路不好走，乘坐项目组的车更安全。你看着两辆明显铺张的越野车，内心十分纠结，一方面知道这样的接站不符合规定，另一方面又担心拒绝会驳了赵负责的面子，影响后续检查工作的开展。</p>
+                <div class="option-container">
+                    <a href="#" class="option" onclick="showScene('scene2', 1)">坚决拒绝，明确表示按原计划打车前往</a>
+                    <a href="#" class="option" onclick="showScene('scene2', 2)">委婉指出车辆浪费，只乘坐一辆车前往</a>
+                    <a href="#" class="option" onclick="showScene('scene2', 3)">犹豫再三，最终还是坐上了车，默认这次超规格接待</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第二幕：晚餐的诱惑 -->
+        <div class="scene" id="scene2" style="background-image: url('2.png');">
+            <div class="content-container">
+                <h2>第二幕：晚餐的诱惑</h2>
+                <p>夜幕降临，你们到达项目部，赵负责安排你们用餐。进入食堂却发现桌上摆满了山珍野味等菜肴，还有白酒。赵负责热情地招呼大家吃喝，大家纷纷看向你，似乎在等你表态。你心里清楚违规吃喝后果，可面对热情的招待和同事们的目光，拒绝的话到嘴边又有些犹豫。</p>
+                <div class="option-container">
+                    <a href="#" class="option" onclick="showScene('scene3', 1)">要求换成普通工作餐，并拒绝饮酒</a>
+                    <a href="#" class="option" onclick="showScene('scene3', 2)">象征性吃一点，不喝酒，不扫大家的兴</a>
+                    <a href="#" class="option" onclick="showScene('scene3', 3)">畅快地吃饭喝酒，当作没看见这些问题</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第三幕：报销单里的秘密 -->
+        <div class="scene" id="scene3" style="background-image: url('3.png');">
+            <div class="content-container">
+                <h2>第三幕：报销单里的秘密</h2>
+                <p>在检查项目财务资料时，你发现一叠以会议费名义报销的单据，发现其中夹杂着多笔餐饮发票。你叫来项目核算员小李询问情况，小李支支吾吾地解释是项目办会期间招待用的。这时项目负责人走过来，拍着你的肩膀，称项目上有些支出不好走账，希望你多担待，还递来一个红包作为“辛苦费”。你瞬间明白这是在虚列报销，违规套取资金。</p>
+                <div class="option-container">
+                    <a href="#" class="option" onclick="showScene('scene4', 1)">当场退回红包，要求小李重新整理报销单据，并将此事上报</a>
+                    <a href="#" class="option" onclick="showScene('scene4', 2)">委婉拒绝红包，但不再深究报销单的问题</a>
+                    <a href="#" class="option" onclick="showScene('ending4', 3)">收下红包，私下要求小李把烟酒发票剔除，修改报销单</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第四幕：铺张的“工作餐” -->
+        <div class="scene" id="scene4" style="background-image: url('4.png');">
+            <div class="content-container">
+                <h2>第四幕：铺张的“工作餐”</h2>
+                <p>第二天中午用餐时，食堂又摆出了一大桌丰盛高档的菜肴，远超正常工作餐标准。项目负责人笑着表示难得检查组来，一定要吃好喝好。你看着满桌几乎没怎么动过就准备倒掉的食物，想起吃喝风屡禁不止，内心很不是滋味。</p>
+                <div class="option-container">
+                    <a href="#" class="option" onclick="showScene('scene5', 1)">严肃指出铺张浪费行为，要求以后按照标准准备工作餐</a>
+                    <a href="#" class="option" onclick="showScene('scene5', 2)">虽然觉得浪费，但没有出声，默默吃完饭</a>
+                    <a href="#" class="option" onclick="showScene('scene5', 3)">不关我事，又不是我家</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第五幕：“工作考察”的陷阱 -->
+        <div class="scene" id="scene5" style="background-image: url('5.png');">
+            <div class="content-container">
+                <h2>第五幕：“工作考察”的陷阱</h2>
+                <p>检查接近尾声，项目负责人提议项目部驻地附近有个景区，风景特别好，顺路去考察考察，也算是丰富一下工作内容。你心里明白这是以工作考察为名安排旅游，同行的老张有些跃跃欲试，并用目光询问你。</p>
+                <div class="option-container">
+                    <a href="#" class="option" onclick="showScene('scene6', 1)">果断拒绝，明确表示检查工作要专注，不应安排旅游活动</a>
+                    <a href="#" class="option" onclick="showScene('scene6', 2)">同意去景区，但强调只是简单参观，不参与任何娱乐消费</a>
+                    <a href="#" class="option" onclick="showScene('scene6', 3)">跟着大家一起去，当作是放松一下</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第六幕：意外的“礼物” -->
+        <div class="scene" id="scene6" style="background-image: url('6.png');">
+            <div class="content-container">
+                <h2>第六幕：意外的“礼物”</h2>
+                <p>检查结束回到家几天后，你收到一个没有寄件人的快递包裹。打开一看，里面是各种本地土特产，还有一张写着“感谢关照”的字条。你立刻明白这是项目上寄来的，面对这份“心意”，你陷入了两难，收下显然违反规定，退回又怕伤了和气。</p>
+                <div class="option-container">
+                    <a href="#" class="option" onclick="showScene('scene7', 1)">立即联系项目负责人，说明情况并将土特产退回</a>
+                    <a href="#" class="option" onclick="showScene('scene7', 2)">暂时放在家里，犹豫要不要处理</a>
+                    <a href="#" class="option" onclick="showScene('scene7', 3)">收下土特产，当作没这回事</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第七幕：思想的抉择 -->
+        <div class="scene" id="scene7" style="background-image: url('7.png');">
+            <div class="content-container">
+                <h2>第七幕：思想的抉择</h2>
+                <p>夜深人静，你坐在书桌前，这些天在项目上的经历在脑海中不断闪现。那些超规格的接待、违规的宴请、虚列的报销、浪费的饭菜、变相的旅游，还有这份意外的“礼物”，每一样都在挑战着纪律的红线。深知如果纵容这些行为，不仅违反规定，更会损害风气，内心在纠结中面临着重要的抉择。</p>
+                <div class="option-container">
+                    <a href="#" class="option" onclick="showScene('scene8', 1)">如实汇报这次检查中遇到的违规情况</a>
+                    <a href="#" class="option" onclick="showScene('scene8', 2)">只对部分严重问题进行汇报，其他小事隐瞒下来</a>
+                    <a href="#" class="option" onclick="showScene('scene8', 3)">当作什么都没发生，希望这些事情不会被发现</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 结局场景 -->
+        <div class="ending" id="ending1" style="background-image: url('8.png');">
+            <div class="content-container">
+                <h2>结局</h2>
+                <p>你将检查中遇到的所有违规情况详细整理成报告，如实向单位汇报。一周后，领导在会上公开表扬你坚持原则、廉洁奉公的行为，并将你树为典型。不久后，你被推荐抽调参加上级巡视工作，你积极分享这次经历，协助完善单位监督制度，成为单位的先进工作者。</p>
+                <div class="option-container">
+                    <a href="#" class="option" onclick="restart()">恭喜你，顺利过关</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="ending" id="ending2" style="background-image: url('9.png');">
+            <div class="content-container">
+                <h2>结局</h2>
+                <p>你只对部分严重问题进行汇报，隐瞒了一些自认为“小事”的违规行为。起初，你以为能侥幸过关，但不久后，被隐瞒的问题被其他检查组查出。你因欺上瞒下、履职不力受到通报批评，取消了当年的评优资格，原本有望晋升的机会也随之泡汤，在同事面前抬不起头，职业发展陷入困境。</p>
+                <div class="option-container">
+                    <a href="#" class="option" onclick="restart()">早知今日，何必当初</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="ending" id="ending3" style="background-image: url('10.png');">
+            <div class="content-container">
+                <h2>结局</h2>
+                <p>你当作什么都没发生，希望事情不会被发现。然而纸包不住火，项目的违规行为被匿名举报，上级部门展开全面调查。不仅项目相关负责人受到严惩，你也因玩忽职守、包庇隐瞒，被给予党内警告处分，调离原工作岗位，从此在单位失去信任，为自己的错误选择付出了沉重代价。</p>
+                <div class="option-container">
+                    <a href="#" class="option" onclick="restart()">如果组织能再给我一次机会，我一定好好把握</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="ending" id="ending4" style="background-image: url('11.png');">
+            <div class="content-container">
+                <h2>结局</h2>
+                <p>收受红包是严重的违纪行为。很快，你的行为被纪检部门发现，根据《中国共产党纪律处分条例》第九十七条：“收受可能影响公正执行公务的礼品、礼金、消费卡（券）和有价证券、股权、其他金融产品等财物，情节较轻的，给予警告或者严重警告处分；情节较重的，给予撤销党内职务或者留党察看处分；情节严重的，给予开除党籍处分。”最终，你受到了党内警告处分，被免去现职，调离岗位。</p>
+                <div class="option-container">
+                    <a href="#" class="option" onclick="restart()">深刻反思，重新开始</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 显示指定场景
+        function showScene(nextSceneId, choice) {
+            // 防止默认跳转行为
+            event.preventDefault();
+            
+            console.log(`尝试跳转到场景: ${nextSceneId}, 选择: ${choice}`);
+
+            // 隐藏所有场景和结局
+            const allScenes = document.querySelectorAll('.scene, .ending');
+            allScenes.forEach(scene => {
+                scene.classList.remove('active');
+                scene.style.display = 'none';
+            });
+
+            // 如果是第三幕选择第三个选项，直接跳转到ending4
+            if (nextSceneId === 'ending4' && choice === 3) {
+                console.log("跳转到ending4");
+                const ending4 = document.getElementById('ending4');
+                if (ending4) {
+                    ending4.style.display = 'flex';
+                    ending4.classList.add('active');
+                }
+                return;
+            }
+
+            // 处理常规结局场景
+            if (nextSceneId === 'scene8') {
+                let targetEndingId = null;
+                if (choice === 1) targetEndingId = 'ending1';
+                else if (choice === 2) targetEndingId = 'ending2';
+                else if (choice === 3) targetEndingId = 'ending3';
+                
+                if (targetEndingId) {
+                    const targetEnding = document.getElementById(targetEndingId);
+                    if (targetEnding) {
+                        targetEnding.style.display = 'flex';
+                        targetEnding.classList.add('active');
+                    }
+                } else {
+                    console.error(`无效的选择: ${choice}`);
+                }
+                return;
+            }
+
+            // 显示目标场景
+            const targetScene = document.getElementById(nextSceneId);
+            if (targetScene) {
+                targetScene.style.display = 'flex';
+                targetScene.classList.add('active');
+            } else {
+                console.error(`未找到 ID 为 ${nextSceneId} 的场景`);
+            }
+        }
+
+        // 重新开始
+        function restart() {
+            // 防止默认跳转行为
+            event.preventDefault();
+            showScene('intro');
+        }
+    </script>
+</body>
+
+</html>
+
+
